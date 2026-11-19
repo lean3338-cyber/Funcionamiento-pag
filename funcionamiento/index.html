@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Una guía sencilla para entender qué hace Huellas en Casa y cómo funciona por dentro.">
+    <title>Cómo funciona Huellas en Casa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="arriba">
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="#arriba">Huellas en Casa</a>
+            <span class="topbar-note">Guía sencilla del proyecto</span>
+        </div>
+    </header>
+
+    <section class="hero" aria-labelledby="titulo">
+        <div class="hero-inner">
+            <p class="eyebrow">Una explicación para todos</p>
+            <h1 id="titulo">¿Cómo funciona Huellas en Casa?</h1>
+            <p class="hero-lead">Esta guía cuenta, con palabras simples, qué hace el proyecto, qué pasos sigue una persona que quiere adoptar y qué partes trabajan juntas para que el sitio funcione.</p>
+            <div class="hero-tags" aria-label="Temas de la guía">
+                <span>El recorrido de adopción</span>
+                <span>Las partes del sistema</span>
+                <span>Qué necesita para funcionar</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="page-layout">
+        <aside class="contents" aria-label="Contenido de la guía">
+            <h2>En esta página</h2>
+            <ol>
+                <li><a href="#resumen">La idea general</a></li>
+                <li><a href="#recorrido">El recorrido</a></li>
+                <li><a href="#personas">Quién puede hacer qué</a></li>
+                <li><a href="#piezas">Las piezas del sitio</a></li>
+                <li><a href="#datos">Qué información guarda</a></li>
+                <li><a href="#seguridad">Privacidad y permisos</a></li>
+                <li><a href="#puesta-en-marcha">Cómo se pone en marcha</a></li>
+                <li><a href="#estatica">Alojamiento estático</a></li>
+                <li><a href="#apariencia">Diseño y accesibilidad</a></li>
+                <li><a href="#diccionario">Diccionario sencillo</a></li>
+            </ol>
+        </aside>
+
+        <main>
+            <p class="intro-note"><strong>En una frase:</strong> Huellas en Casa ayuda a mostrar mascotas, recibir solicitudes de adopción y organizar el trabajo del refugio. Esta página es una explicación; no modifica ni reemplaza la aplicación.</p>
+
+            <section class="guide-section" id="resumen">
+                <p class="section-kicker">01 · La idea general</p>
+                <h2>Un lugar para encontrar un nuevo hogar</h2>
+                <p>El sitio permite que las personas conozcan a las mascotas disponibles, lean sobre ellas y envíen una solicitud. El equipo del refugio puede revisar esas solicitudes y mantener actualizada la información.</p>
+                <p>La información no queda guardada solamente en la página que ves. El sitio la envía a un servidor, y el servidor la guarda en una base de datos para poder consultarla más adelante.</p>
+                <div class="analogy"><strong>Una comparación:</strong> la página es el mostrador que usa el público; el servidor es el personal que recibe y revisa los pedidos; la base de datos es el archivador donde se guardan.</div>
+            </section>
+
+            <section class="guide-section" id="recorrido">
+                <p class="section-kicker">02 · Paso a paso</p>
+                <h2>¿Qué hace una persona que quiere adoptar?</h2>
+                <p class="muted">El recorrido típico desde que encuentra el sitio hasta que el refugio revisa su interés:</p>
+                <div class="flow" aria-label="Pasos para solicitar una adopción">
+                    <div class="flow-step"><strong>1. Explorar</strong><span>Ver las mascotas y buscar por nombre o especie.</span></div>
+                    <div class="flow-step"><strong>2. Conocer</strong><span>Abrir el detalle para leer la información de una mascota.</span></div>
+                    <div class="flow-step"><strong>3. Registrarse</strong><span>Crear una cuenta e iniciar sesión como adoptante.</span></div>
+                    <div class="flow-step"><strong>4. Solicitar</strong><span>Confirmar el interés y explicar por qué quiere adoptar.</span></div>
+                    <div class="flow-step"><strong>5. Revisar</strong><span>El refugio evalúa la solicitud y actualiza su estado.</span></div>
+                </div>
+                <div class="grid">
+                    <article class="mini-card">
+                        <h3>Buscar mascotas</h3>
+                        <p>En el catálogo se puede filtrar por perro o gato, buscar por texto y ver cuáles están disponibles o marcadas como urgentes.</p>
+                    </article>
+                    <article class="mini-card">
+                        <h3>Guardar favoritas</h3>
+                        <p>Una persona con cuenta puede guardar mascotas para encontrarlas fácilmente después. Puede quitar una de sus favoritas cuando quiera.</p>
+                    </article>
+                    <article class="mini-card">
+                        <h3>Seguir una solicitud</h3>
+                        <p>La persona puede consultar sus solicitudes y ver si siguen pendientes, fueron aprobadas o fueron rechazadas.</p>
+                    </article>
+                    <article class="mini-card">
+                        <h3>Completar el perfil</h3>
+                        <p>El perfil reúne datos útiles para el proceso, como teléfono, tipo de vivienda, actividad y si hay niños en casa.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="guide-section" id="personas">
+                <p class="section-kicker">03 · Las personas y sus permisos</p>
+                <h2>Hay dos tipos principales de cuenta</h2>
+                <div class="grid">
+                    <article class="mini-card">
+                        <h3>Adoptante</h3>
+                        <p>Puede consultar el catálogo, guardar favoritas, enviar solicitudes y revisar o editar su perfil.</p>
+                    </article>
+                    <article class="mini-card">
+                        <h3>Administrador del refugio</h3>
+                        <p>Puede agregar o actualizar mascotas, gestionar solicitudes, consultar adoptantes y ver estadísticas generales.</p>
+                    </article>
+                </div>
+                <p class="space-top">Una persona que todavía no inició sesión puede ver la información pública y registrarse o ingresar. Las acciones personales requieren una cuenta.</p>
+            </section>
+
+            <section class="guide-section" id="piezas">
+                <p class="section-kicker">04 · Qué hay detrás de la pantalla</p>
+                <h2>Las piezas del sitio, explicadas fácil</h2>
+                <div class="file-map">
+                    <div class="file-row"><code>HTML</code><span>Son las páginas y los formularios que se ven en el navegador.</span></div>
+                    <div class="file-row"><code>css/styles.css</code><span>Define los colores, tamaños, tarjetas, menú y cómo se acomodan las páginas en celulares.</span></div>
+                    <div class="file-row"><code>js/</code><span>Son instrucciones para que el navegador responda a búsquedas, botones y formularios.</span></div>
+                    <div class="file-row"><code>api/</code><span>Recibe pedidos del sitio, por ejemplo “mostrar mascotas” o “guardar esta solicitud”.</span></div>
+                    <div class="file-row"><code>modelos/</code><span>Contiene las operaciones que consultan o actualizan la información guardada.</span></div>
+                    <div class="file-row"><code>config/</code><span>Reúne ajustes de conexión y herramientas para responder y comprobar permisos.</span></div>
+                    <div class="file-row"><code>base_de_datos/huellas.sql</code><span>Describe cómo se organiza la base de datos y contiene algunos datos iniciales.</span></div>
+                    <div class="file-row"><code>img-mascotas/</code><span>Guarda las imágenes que se muestran en las fichas y las fotos que sube el administrador.</span></div>
+                    <div class="file-row"><code>admin/ y usuario/</code><span>Contienen las páginas para el trabajo del administrador y las funciones de cada adoptante.</span></div>
+                </div>
+                <div class="analogy"><strong>Cómo viaja un pedido:</strong> el navegador envía una petición a la API; la API revisa quién la hizo y qué necesita; después consulta o actualiza la base de datos y devuelve una respuesta.</div>
+            </section>
+
+            <section class="guide-section" id="datos">
+                <p class="section-kicker">05 · La información</p>
+                <h2>¿Qué cosas guarda el sistema?</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Grupo</th><th>Qué representa</th></tr></thead>
+                        <tbody>
+                            <tr><td>Personas</td><td>La cuenta, datos de contacto y perfil. Las contraseñas se guardan protegidas, no como texto común.</td></tr>
+                            <tr><td>Mascotas</td><td>Nombre, especie, edad, descripción, foto y estado de adopción.</td></tr>
+                            <tr><td>Favoritas</td><td>La relación entre una persona y las mascotas que guardó.</td></tr>
+                            <tr><td>Solicitudes</td><td>Quién se interesó por qué mascota, cuándo y cuál es el estado de la solicitud.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="space-top">Así se conectan esos datos: una persona puede enviar varias solicitudes; cada solicitud corresponde a una mascota. También puede guardar varias mascotas favoritas.</p>
+                <p>Los estados de las mascotas son <strong>Disponible</strong>, <strong>En proceso</strong> y <strong>Adoptada</strong>. Las solicitudes pueden quedar <strong>Pendientes</strong>, <strong>Aprobadas</strong> o <strong>Rechazadas</strong>.</p>
+            </section>
+
+            <section class="guide-section security" id="seguridad">
+                <p class="section-kicker">06 · Cuidado de las cuentas</p>
+                <h2>¿Cómo se controlan los permisos?</h2>
+                <p>El sistema usa una sesión para recordar que una persona inició sesión. Las páginas pueden mostrar opciones según el tipo de cuenta, pero la comprobación importante también se hace en el servidor antes de realizar acciones privadas.</p>
+                <ul class="plain-list">
+                    <li>Solo una cuenta autorizada puede ver sus datos privados o sus solicitudes.</li>
+                    <li>Las acciones de administración requieren una cuenta administradora.</li>
+                    <li>Las contraseñas se guardan mediante una transformación de seguridad, en vez de guardarse directamente como fueron escritas.</li>
+                    <li>El servidor valida los datos recibidos y puede rechazar pedidos incorrectos o sin permiso.</li>
+                </ul>
+                <p class="space-top-small">Por ejemplo, “no has iniciado sesión” y “no tienes permiso para administrar” son situaciones distintas; el servidor las reconoce y responde de manera diferente.</p>
+            </section>
+
+            <section class="guide-section" id="puesta-en-marcha">
+                <p class="section-kicker">07 · Preparar el proyecto original</p>
+                <h2>¿Qué se necesita para que funcione completo?</h2>
+                <p>El proyecto principal no es solamente un conjunto de páginas. Para que funcionen el registro, el inicio de sesión, las solicitudes y la administración, también hace falta un servidor que pueda ejecutar PHP y una base de datos MySQL o MariaDB.</p>
+                <ol class="plain-list">
+                    <li>Colocar el proyecto en una carpeta servida por Apache.</li>
+                    <li>Encender Apache y MySQL/MariaDB, por ejemplo desde XAMPP.</li>
+                    <li>Importar el archivo <code>base_de_datos/huellas.sql</code> en la base de datos.</li>
+                    <li>Revisar <code>config/conexion.php</code> para que coincidan los datos de conexión del entorno.</li>
+                    <li>Abrir el sitio desde una dirección web del servidor, no desde un archivo local con <code>file://</code>.</li>
+                </ol>
+                <div class="notice"><strong>Importante:</strong> las credenciales incluidas en la configuración son para desarrollo local. Antes de publicar el sistema completo, la persona responsable del hosting debe configurar credenciales propias y seguras.</div>
+            </section>
+
+            <section class="guide-section static-note" id="estatica">
+                <p class="section-kicker">08 · Una diferencia importante</p>
+                <h2>¿Qué significa “página estática”?</h2>
+                <p>Una página estática es un archivo que el navegador puede mostrar sin que un servidor ejecute código de backend. Esta guía está hecha de esa manera: es un HTML con sus estilos incluidos y no necesita conectarse a la base de datos.</p>
+                <p>El proyecto completo sí necesita PHP y MySQL/MariaDB para iniciar sesión, guardar favoritas, crear solicitudes y administrar información. Si se suben únicamente sus archivos HTML, CSS y JavaScript a un hosting que solo ofrece páginas estáticas, esas funciones no tendrán el backend que necesitan.</p>
+                <p>En resumen: <strong>esta guía se puede mostrar como página estática</strong>; para que toda la aplicación de adopciones funcione, hay que contratar o configurar un hosting compatible con PHP y una base de datos.</p>
+            </section>
+
+            <section class="guide-section" id="apariencia">
+                <p class="section-kicker">09 · Cómo se ve</p>
+                <h2>Se adapta a celulares y permite cambiar el tema</h2>
+                <p>Las páginas del proyecto comparten estilos para que los menús, tarjetas, formularios y tablas tengan una apariencia coherente. El diseño se reorganiza en pantallas pequeñas para que se pueda usar desde un teléfono.</p>
+                <p>La aplicación también incluye un selector de apariencia con modo claro u oscuro y varias paletas de color. La preferencia elegida se guarda en el navegador para conservarla en la próxima visita desde ese mismo dispositivo.</p>
+            </section>
+
+            <section class="guide-section" id="estado-actual">
+                <p class="section-kicker">10 · Cómo leer los archivos</p>
+                <h2>Algunas aclaraciones sobre la carpeta</h2>
+                <ul class="plain-list">
+                    <li><code>estructura.md</code> es el documento que explica la organización técnica del proyecto.</li>
+                    <li>No hay un archivo llamado <code>carpetas.txt</code>. La lista de carpetas está escrita en el documento Markdown.</li>
+                    <li>Los archivos con extensión <code>.txt</code> que aparecen en la carpeta son auxiliares o copias de texto; las páginas cargan los archivos <code>.css</code> y <code>.js</code>.</li>
+                    <li>Algunas páginas de usuario están en la raíz y otras, más completas, están dentro de <code>usuario/</code>. Para los flujos conectados a la cuenta, se usan las páginas de esa carpeta.</li>
+                </ul>
+                <p class="space-top-small">La aplicación principal sirve para gestionar el proceso de adopción. Esta página, en cambio, solo lo explica de forma informativa.</p>
+            </section>
+
+            <section class="guide-section" id="diccionario">
+                <p class="section-kicker">11 · Palabras técnicas, sin vueltas</p>
+                <h2>Diccionario rápido</h2>
+                <dl class="glossary">
+                    <div><dt>Frontend</dt><dd>La parte del sitio que la persona ve y usa en su navegador.</dd></div>
+                    <div><dt>Backend</dt><dd>La parte que trabaja en el servidor: revisa pedidos y aplica reglas.</dd></div>
+                    <div><dt>API</dt><dd>El canal por el que la página y el servidor se envían pedidos y respuestas.</dd></div>
+                    <div><dt>Base de datos</dt><dd>Un conjunto organizado de información que el sistema puede guardar y consultar.</dd></div>
+                    <div><dt>Sesión</dt><dd>El recuerdo temporal de que una persona ya inició sesión.</dd></div>
+                    <div><dt>Hosting</dt><dd>Un servicio que mantiene los archivos del sitio disponibles en Internet.</dd></div>
+                    <div><dt>Responsive</dt><dd>Un diseño que se acomoda a distintos tamaños de pantalla.</dd></div>
+                    <div><dt>Endpoint</dt><dd>Una dirección concreta de la API que realiza una tarea, como listar mascotas.</dd></div>
+                </dl>
+                <a class="back-top" href="#arriba">Volver al inicio ↑</a>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Huellas en Casa · Guía informativa basada en el documento de estructura y funcionamiento del proyecto.</p>
+    </footer>
+</body>
+</html>
