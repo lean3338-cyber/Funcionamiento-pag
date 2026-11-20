@@ -35,9 +35,11 @@
                 <li><a href="#resumen">La idea general</a></li>
                 <li><a href="#recorrido">El recorrido</a></li>
                 <li><a href="#personas">Quién puede hacer qué</a></li>
+                <li><a href="#estados">Disponibilidad y solicitudes</a></li>
                 <li><a href="#piezas">Las piezas del sitio</a></li>
                 <li><a href="#datos">Qué información guarda</a></li>
                 <li><a href="#seguridad">Privacidad y permisos</a></li>
+                <li><a href="#avisos">Avisos del administrador</a></li>
                 <li><a href="#puesta-en-marcha">Cómo se pone en marcha</a></li>
                 <li><a href="#estatica">Alojamiento estático</a></li>
                 <li><a href="#apariencia">Diseño y accesibilidad</a></li>
@@ -67,6 +69,8 @@
                     <div class="flow-step"><strong>4. Solicitar</strong><span>Confirmar el interés y explicar por qué quiere adoptar.</span></div>
                     <div class="flow-step"><strong>5. Revisar</strong><span>El refugio evalúa la solicitud y actualiza su estado.</span></div>
                 </div>
+                <p class="space-top">Si todavía no tiene cuenta, la persona puede comenzar el registro desde el detalle de una mascota disponible. Luego de iniciar sesión, el sitio la devuelve a ese detalle para continuar.</p>
+                <p>En ese caso, el sitio explica: <strong>“Crea una cuenta para solicitar la adopción y desbloquear otras funciones”</strong>. Si la mascota ya fue adoptada, no se permite iniciar una solicitud para ella.</p>
                 <div class="grid">
                     <article class="mini-card">
                         <h3>Buscar mascotas</h3>
@@ -84,6 +88,10 @@
                         <h3>Completar el perfil</h3>
                         <p>El perfil reúne datos útiles para el proceso, como teléfono, tipo de vivienda, actividad y si hay niños en casa.</p>
                     </article>
+                    <article class="mini-card">
+                        <h3>Buscar y filtrar</h3>
+                        <p>El catálogo permite combinar especie, disponibilidad o urgencia con una búsqueda por nombre o especie. Limpiar restaura el listado completo.</p>
+                    </article>
                 </div>
             </section>
 
@@ -97,14 +105,22 @@
                     </article>
                     <article class="mini-card">
                         <h3>Administrador del refugio</h3>
-                        <p>Puede agregar o actualizar mascotas, gestionar solicitudes, consultar adoptantes y ver estadísticas generales.</p>
+                        <p>Puede agregar o actualizar mascotas, gestionar solicitudes, consultar adoptantes y ver estadísticas generales. Si hay solicitudes pendientes, el sitio las destaca en la navegación y el dashboard.</p>
                     </article>
                 </div>
                 <p class="space-top">Una persona que todavía no inició sesión puede ver la información pública y registrarse o ingresar. Las acciones personales requieren una cuenta.</p>
             </section>
 
+            <section class="guide-section" id="estados">
+                <p class="section-kicker">04 · Estados y reglas de adopción</p>
+                <h2>¿Qué pasa cuando una mascota no está disponible?</h2>
+                <p>Las mascotas pueden estar <strong>Disponibles</strong>, <strong>En proceso</strong> o <strong>Adoptadas</strong>. El detalle muestra su estado; si ya no está disponible, la opción de solicitar adopción aparece deshabilitada o no se ofrece.</p>
+                <p>La regla también se revisa en el servidor cuando se envía la solicitud. Una mascota debe existir y estar disponible. El sistema además evita que la misma persona tenga más de una solicitud activa para la misma mascota. Cuando el administrador aprueba una solicitud, la mascota pasa a estado <strong>Adoptada</strong>.</p>
+                <div class="analogy"><strong>En simple:</strong> desactivar un botón ayuda a orientar a la persona, pero la decisión final se comprueba en el servidor antes de guardar nada.</div>
+            </section>
+
             <section class="guide-section" id="piezas">
-                <p class="section-kicker">04 · Qué hay detrás de la pantalla</p>
+                <p class="section-kicker">05 · Qué hay detrás de la pantalla</p>
                 <h2>Las piezas del sitio, explicadas fácil</h2>
                 <div class="file-map">
                     <div class="file-row"><code>HTML</code><span>Son las páginas y los formularios que se ven en el navegador.</span></div>
@@ -117,11 +133,53 @@
                     <div class="file-row"><code>img-mascotas/</code><span>Guarda las imágenes que se muestran en las fichas y las fotos que sube el administrador.</span></div>
                     <div class="file-row"><code>admin/ y usuario/</code><span>Contienen las páginas para el trabajo del administrador y las funciones de cada adoptante.</span></div>
                 </div>
-                <div class="analogy"><strong>Cómo viaja un pedido:</strong> el navegador envía una petición a la API; la API revisa quién la hizo y qué necesita; después consulta o actualiza la base de datos y devuelve una respuesta.</div>
+                <div class="analogy"><strong>Cómo viaja un pedido:</strong> el navegador envía una petición a la API; la API revisa quién la hizo y qué necesita; los modelos ejecutan las consultas a través de PDO; después se devuelve una respuesta JSON al navegador.</div>
+                <figure class="system-diagram" aria-labelledby="mapa-sistema-titulo">
+                    <figcaption id="mapa-sistema-titulo">El camino de la información</figcaption>
+                    <div class="system-route" role="img" aria-label="Navegador conectado con API, PHP y base de datos">
+                        <div class="system-node">
+                            <span class="node-symbol">WEB</span>
+                            <strong>Navegador</strong>
+                            <small>Lo que usa la persona</small>
+                        </div>
+                        <span class="route-arrow" aria-hidden="true">→</span>
+                        <div class="system-node node-api">
+                            <span class="node-symbol">API</span>
+                            <strong>Puerta de entrada</strong>
+                            <small>Revisa cada pedido</small>
+                        </div>
+                        <span class="route-arrow" aria-hidden="true">→</span>
+                        <div class="system-node node-php">
+                            <span class="node-symbol">PHP</span>
+                            <strong>Reglas y consultas</strong>
+                            <small>Modelos y permisos</small>
+                        </div>
+                        <span class="route-arrow" aria-hidden="true">→</span>
+                        <div class="system-node node-data">
+                            <span class="node-symbol">SQL</span>
+                            <strong>Base de datos</strong>
+                            <small>Información guardada</small>
+                        </div>
+                    </div>
+                </figure>
+                <h3 class="space-top">Algunos ejemplos de pedidos</h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Dirección</th><th>Para qué sirve</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>api/auth.php</code></td><td>Crear una cuenta, iniciar o cerrar sesión y consultar quién inició sesión.</td></tr>
+                            <tr><td><code>api/mascotas.php</code></td><td>Consultar el catálogo o, como administrador, crear, editar y eliminar mascotas.</td></tr>
+                            <tr><td><code>api/favoritos.php</code></td><td>Consultar las mascotas favoritas o agregar/quitar una.</td></tr>
+                            <tr><td><code>api/solicitudes.php</code></td><td>Crear o consultar solicitudes y, como administrador, aprobarlas o rechazarlas.</td></tr>
+                            <tr><td><code>api/usuarios.php</code></td><td>Consultar o editar el perfil y gestionar la lista de adoptantes.</td></tr>
+                            <tr><td><code>api/dashboard.php</code></td><td>Obtener los números que se muestran en el panel administrativo.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
             <section class="guide-section" id="datos">
-                <p class="section-kicker">05 · La información</p>
+                <p class="section-kicker">06 · La información</p>
                 <h2>¿Qué cosas guarda el sistema?</h2>
                 <div class="table-wrap">
                     <table>
@@ -136,10 +194,43 @@
                 </div>
                 <p class="space-top">Así se conectan esos datos: una persona puede enviar varias solicitudes; cada solicitud corresponde a una mascota. También puede guardar varias mascotas favoritas.</p>
                 <p>Los estados de las mascotas son <strong>Disponible</strong>, <strong>En proceso</strong> y <strong>Adoptada</strong>. Las solicitudes pueden quedar <strong>Pendientes</strong>, <strong>Aprobadas</strong> o <strong>Rechazadas</strong>.</p>
+                <p>Si al crear una mascota el administrador no selecciona una imagen, se usa una foto genérica. Al editar, dejar el selector vacío conserva la foto que ya tenía.</p>
+
+                <figure class="data-diagram" aria-labelledby="relaciones-titulo">
+                    <figcaption id="relaciones-titulo">Cómo se relacionan personas, solicitudes y mascotas</figcaption>
+                    <div class="data-links" role="img" aria-label="Una persona puede tener varias solicitudes; cada solicitud corresponde a una mascota. Personas y mascotas también se conectan mediante favoritos.">
+                        <div class="data-node">
+                            <span class="data-icon" aria-hidden="true">P</span>
+                            <strong>Persona</strong>
+                            <small>Una cuenta</small>
+                        </div>
+                        <div class="data-connection">
+                            <span>1 persona</span>
+                            <b aria-hidden="true">→</b>
+                            <span>varias solicitudes</span>
+                        </div>
+                        <div class="data-node request-node">
+                            <span class="data-icon" aria-hidden="true">S</span>
+                            <strong>Solicitud</strong>
+                            <small>Interés por adoptar</small>
+                        </div>
+                        <div class="data-connection">
+                            <span>cada solicitud</span>
+                            <b aria-hidden="true">→</b>
+                            <span>1 mascota</span>
+                        </div>
+                        <div class="data-node pet-node">
+                            <span class="data-icon" aria-hidden="true">M</span>
+                            <strong>Mascota</strong>
+                            <small>Ficha de adopción</small>
+                        </div>
+                    </div>
+                    <p class="diagram-caption">Las favoritas son otra relación: una persona puede guardar muchas mascotas y una mascota puede ser favorita de distintas personas.</p>
+                </figure>
             </section>
 
             <section class="guide-section security" id="seguridad">
-                <p class="section-kicker">06 · Cuidado de las cuentas</p>
+                <p class="section-kicker">07 · Cuidado de las cuentas</p>
                 <h2>¿Cómo se controlan los permisos?</h2>
                 <p>El sistema usa una sesión para recordar que una persona inició sesión. Las páginas pueden mostrar opciones según el tipo de cuenta, pero la comprobación importante también se hace en el servidor antes de realizar acciones privadas.</p>
                 <ul class="plain-list">
@@ -151,8 +242,27 @@
                 <p class="space-top-small">Por ejemplo, “no has iniciado sesión” y “no tienes permiso para administrar” son situaciones distintas; el servidor las reconoce y responde de manera diferente.</p>
             </section>
 
+            <section class="guide-section" id="avisos">
+                <p class="section-kicker">08 · Seguimiento del refugio</p>
+                <h2>¿Cómo se entera el administrador de solicitudes pendientes?</h2>
+                <p>Cuando hay solicitudes pendientes, la navegación del administrador muestra una insignia con la cantidad. El dashboard también resalta la tarjeta de solicitudes pendientes.</p>
+                <p>El sitio consulta las estadísticas al entrar y las actualiza periódicamente. Al abrir la lista administrativa, el contador también se vuelve a calcular después de cargar las solicitudes. El aviso es visual dentro del sitio; no es una notificación del teléfono ni un correo electrónico.</p>
+                <div class="admin-alert-graphic" role="img" aria-label="Ejemplo de aviso: tres solicitudes pendientes para revisar">
+                    <div class="alert-nav">
+                        <span>Solicitudes</span>
+                        <b class="alert-count">3</b>
+                    </div>
+                    <div class="alert-card">
+                        <span class="alert-dot" aria-hidden="true"></span>
+                        <span><strong>Solicitudes pendientes</strong><small>Hay nuevas solicitudes para revisar</small></span>
+                        <span class="alert-action">Revisar →</span>
+                    </div>
+                    <p class="diagram-caption">Ejemplo visual: el número real depende de las solicitudes que sigan pendientes.</p>
+                </div>
+            </section>
+
             <section class="guide-section" id="puesta-en-marcha">
-                <p class="section-kicker">07 · Preparar el proyecto original</p>
+                <p class="section-kicker">09 · Preparar el proyecto original</p>
                 <h2>¿Qué se necesita para que funcione completo?</h2>
                 <p>El proyecto principal no es solamente un conjunto de páginas. Para que funcionen el registro, el inicio de sesión, las solicitudes y la administración, también hace falta un servidor que pueda ejecutar PHP y una base de datos MySQL o MariaDB.</p>
                 <ol class="plain-list">
@@ -166,22 +276,24 @@
             </section>
 
             <section class="guide-section static-note" id="estatica">
-                <p class="section-kicker">08 · Una diferencia importante</p>
+                <p class="section-kicker">10 · Una diferencia importante</p>
                 <h2>¿Qué significa “página estática”?</h2>
-                <p>Una página estática es un archivo que el navegador puede mostrar sin que un servidor ejecute código de backend. Esta guía está hecha de esa manera: es un HTML con sus estilos incluidos y no necesita conectarse a la base de datos.</p>
+                <p>Una página estática es un archivo que el navegador puede mostrar sin que un servidor ejecute código de backend. Esta guía está hecha de esa manera: el contenido está en <code>index.html</code> y el diseño en <code>style.css</code>. No necesita conectarse a la base de datos.</p>
                 <p>El proyecto completo sí necesita PHP y MySQL/MariaDB para iniciar sesión, guardar favoritas, crear solicitudes y administrar información. Si se suben únicamente sus archivos HTML, CSS y JavaScript a un hosting que solo ofrece páginas estáticas, esas funciones no tendrán el backend que necesitan.</p>
                 <p>En resumen: <strong>esta guía se puede mostrar como página estática</strong>; para que toda la aplicación de adopciones funcione, hay que contratar o configurar un hosting compatible con PHP y una base de datos.</p>
             </section>
 
             <section class="guide-section" id="apariencia">
-                <p class="section-kicker">09 · Cómo se ve</p>
-                <h2>Se adapta a celulares y permite cambiar el tema</h2>
-                <p>Las páginas del proyecto comparten estilos para que los menús, tarjetas, formularios y tablas tengan una apariencia coherente. El diseño se reorganiza en pantallas pequeñas para que se pueda usar desde un teléfono.</p>
-                <p>La aplicación también incluye un selector de apariencia con modo claro u oscuro y varias paletas de color. La preferencia elegida se guarda en el navegador para conservarla en la próxima visita desde ese mismo dispositivo.</p>
+                <p class="section-kicker">11 · Cómo se ve y se usa</p>
+                <h2>Diseño adaptable y controles prácticos</h2>
+                <p>Las páginas del proyecto comparten estilos para que los menús, tarjetas, formularios y tablas tengan una apariencia coherente. En celular, el menú se despliega y las tablas administrativas se transforman en tarjetas; las solicitudes del adoptante se ajustan al ancho de la pantalla sin desplazamiento lateral.</p>
+                <p>La aplicación incluye un selector de apariencia con modo claro u oscuro y varias paletas. La preferencia se guarda en el navegador para conservarla en visitas posteriores desde el mismo dispositivo.</p>
+                <p>En el inicio de sesión y el registro, el icono de ojo permite mostrar u ocultar temporalmente lo escrito en la contraseña. En la edición de mascotas, el selector de foto enseña la imagen actual y una vista previa de la nueva antes de guardar. La foto se acepta en JPG, PNG o WEBP, con un máximo de 5 MB.</p>
+                <p>Las solicitudes del adoptante se muestran como tarjetas en celulares y no necesitan desplazamiento lateral. Los botones de registro y cancelar se distinguen de la acción principal y se separan para que sean fáciles de tocar.</p>
             </section>
 
             <section class="guide-section" id="estado-actual">
-                <p class="section-kicker">10 · Cómo leer los archivos</p>
+                <p class="section-kicker">12 · Cómo leer los archivos</p>
                 <h2>Algunas aclaraciones sobre la carpeta</h2>
                 <ul class="plain-list">
                     <li><code>estructura.md</code> es el documento que explica la organización técnica del proyecto.</li>
@@ -193,7 +305,7 @@
             </section>
 
             <section class="guide-section" id="diccionario">
-                <p class="section-kicker">11 · Palabras técnicas, sin vueltas</p>
+                <p class="section-kicker">13 · Palabras técnicas, sin vueltas</p>
                 <h2>Diccionario rápido</h2>
                 <dl class="glossary">
                     <div><dt>Frontend</dt><dd>La parte del sitio que la persona ve y usa en su navegador.</dd></div>
@@ -211,7 +323,7 @@
     </div>
 
     <footer>
-        <p>Huellas en Casa · Guía informativa basada en el documento de estructura y funcionamiento del proyecto.</p>
+        <p>Huellas en Casa · Guía informativa del funcionamiento del proyecto.</p>
     </footer>
 </body>
 </html>
